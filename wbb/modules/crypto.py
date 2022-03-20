@@ -6,14 +6,9 @@ from wbb.core.keyboard import ikb
 from wbb.core.sections import section
 from wbb.utils.http import get
 
-__MODULE__ = "Crypto"
-__HELP__ = """
-/crypto [currency]
-        Get Real Time value from currency given.
-"""
 
 
-@app.on_message(filters.command("crypto"))
+@app.on_message(filters.command("ceripik"))
 @capture_err
 async def crypto(_, message):
     if len(message.command) < 2:
