@@ -29,33 +29,7 @@ from pyrogram.types import Message
 from wbb import BOT_ID, SUDOERS, USERBOT_ID, app, app2
 from wbb.core.decorators.errors import capture_err
 
-__MODULE__ = "Pipes"
-__HELP__ = """
-**THIS MODULE IS ONLY FOR DEVS**
 
-Use this module to create a pipe that will forward messages of one chat/channel to another.
-
-
-/activate_pipe [FROM_CHAT_ID] [TO_CHAT_ID] [BOT|USERBOT]
-
-    Active a pipe.
-
-    choose 'BOT' or 'USERBOT' according to your needs,
-    this will decide which client will fetch the
-    message from 'FROM_CHAT'.
-
-
-/deactivate_pipe [FROM_CHAT_ID]
-    Deactivete a pipe.
-
-
-/show_pipes
-    Show all the active pipes.
-
-**NOTE:**
-    These pipes are only temporary, and will be destroyed
-    on restart.
-"""
 pipes_list_bot = {}
 pipes_list_userbot = {}
 
@@ -95,7 +69,7 @@ async def pipes_worker_userbot(_, message: Message):
         await app.send_message(to_chat_id, text=message.text + caption)
 
 
-@app.on_message(filters.command("activate_pipe") & SUDOERS)
+@app.on_message(filters.command("aktif_pipett") & SUDOERS)
 @capture_err
 async def activate_pipe_func(_, message: Message):
     global pipes_list_bot, pipes_list_userbot
@@ -125,7 +99,7 @@ async def activate_pipe_func(_, message: Message):
     await message.reply_text("Activated pipe.")
 
 
-@app.on_message(filters.command("deactivate_pipe") & SUDOERS)
+@app.on_message(filters.command("deaktif_pipett") & SUDOERS)
 @capture_err
 async def deactivate_pipe_func(_, message: Message):
     global pipes_list_bot, pipes_list_userbot
@@ -147,7 +121,7 @@ async def deactivate_pipe_func(_, message: Message):
     await message.reply_text("Deactivated pipe.")
 
 
-@app.on_message(filters.command("pipes") & SUDOERS)
+@app.on_message(filters.command("pipiet") & SUDOERS)
 @capture_err
 async def show_pipes_func(_, message: Message):
     pipes_list_bot.update(pipes_list_userbot)
