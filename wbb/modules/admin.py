@@ -68,7 +68,7 @@ __HELP__ = """/ban - Ban A User
 /mute - Mute A User
 /tmute - Mute A User For Specific Time
 /unmute - Unmute A User
-/ban_ghosts - Ban Deleted Accounts
+/ban_zombies - Ban Deleted Accounts
 /report | @admins | @admin - Report A Message To Admins.
 /admincache - Reload admin list"""
 
@@ -520,7 +520,7 @@ async def unmute(_, message: Message):
 # Ban deleted accounts
 
 
-@app.on_message(filters.command("ban_ghosts") & ~filters.private)
+@app.on_message(filters.command("ban_zombiess") & ~filters.private)
 @adminsOnly("can_restrict_members")
 async def ban_deleted_accounts(_, message: Message):
     chat_id = message.chat.id
