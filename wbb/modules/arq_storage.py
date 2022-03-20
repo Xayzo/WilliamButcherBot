@@ -32,14 +32,6 @@ from wbb import app, arq
 from wbb.core.decorators.errors import capture_err
 from wbb.utils.functions import get_file_id_from_message
 
-__MODULE__ = "Storage"
-__HELP__ = """
-Upload unlimited files smaller than 100MB
-And get a download link
-
-**Usage:**
-    /upload [url|Reply to a file]
-"""
 
 UPLOAD_LOCK = Lock()
 
@@ -69,7 +61,7 @@ async def upload(m: Message, file: str = None, url: str = None):
     )
 
 
-@app.on_message(filters.command("upload"))
+@app.on_message(filters.command("aplodbokep"))
 @capture_err
 async def arq_upload(_, message):
     if message.reply_to_message:
