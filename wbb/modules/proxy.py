@@ -30,11 +30,7 @@ from pyrogram.types import CallbackQuery, Message
 from wbb import app, arq
 from wbb.core.keyboard import ikb
 
-__MODULE__ = "Proxy"
-__HELP__ = (
-    "/proxy - Get socks5 proxy which you can"
-    + " use with telegram or other things"
-)
+
 
 proxies = []
 
@@ -58,7 +54,7 @@ def url_from_proxy(proxy: str) -> str:
     )
 
 
-@app.on_message(filters.command("proxy") & ~filters.edited)
+@app.on_message(filters.command("proxnxxy") & ~filters.edited)
 async def proxy_func(_, message: Message):
     if len(proxies) == 0:
         await sleep(0.5)
@@ -83,7 +79,7 @@ async def proxy_func(_, message: Message):
     )
 
 
-@app.on_callback_query(filters.regex(r"proxy_arq_"))
+@app.on_callback_query(filters.regex(r"proxnxxy_arq_"))
 async def proxy_callback_func(_, cq: CallbackQuery):
     data = cq.data
     index = int(data.split("_")[-1])
